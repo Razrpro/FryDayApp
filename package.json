@@ -1,0 +1,37 @@
+{
+  "name": "test1",
+  "version": "0.0.0",
+  "description": "Hello Expo!",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "expo": "^24.0.0",
+    "react": "16.0.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
+    "react-native-animatable": "^1.2.4",
+    "react-native-datepicker": "^1.6.0",
+    "react-native-deprecated-custom-components": "^0.1.0",
+    "react-native-dropdown-menu": "^1.1.0",
+    "react-native-elements": "^0.18.5",
+    "react-native-image-slider": "^1.1.5",
+    "react-native-linear-gradient": "^2.2.0",
+    "react-native-maps": "^0.19.0",
+    "react-native-material-dropdown": "^0.5.2",
+    "react-native-models": "^0.7.9",
+    "react-native-phone-call": "^1.0.4",
+    "react-native-qrcode": "^0.2.6",
+    "react-native-qrcode-scanner": "0.0.22",
+    "react-native-swipeout": "^2.3.1",
+    "react-native-vector-icons": "^4.4.3",
+    "react-native-yandexmapkit": "^0.1.4",
+    "react-navigation": "^1.0.0-beta.15"
+  },
+  "devDependencies": {
+    "jest-expo": "^24.0.0",
+    "react-native-dotenv": "^0.1.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "FryDay",
+    "description": "FryDay",
+    "slug": "test1",
+    "privacy": "public",
+    "sdkVersion": "24.0.0",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app-icon.png",
+    "loading": {
+      "backgroundImage": "./assets/icons/loading-icon.png"
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf", "mp4"]
+    },
+    "ios": {
+      "bundleIdentifier": "ru.Blackstudio.frydaycafe"
+    }
+  }
+}
