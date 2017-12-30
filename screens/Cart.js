@@ -68,7 +68,6 @@ class Cart extends Component {
       isLoading: true,
     }
 
-
   }
 
   delete_row(id_to_delete){
@@ -164,10 +163,17 @@ class Cart extends Component {
 				    	temp_kolvo = temp_kolvo + value[0].kolvo;
 					});
 				}
+        else{
+            this.setState({
+  						kolvotovar: 0,
+  						summtovar: 0,
+  						isLoadingKorzina: false,
+            });
+        }
 
 
 
-				if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
+				//if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
 						console.log('TEMP_KOLVO:'+temp_kolvo);
 
 					this.setState({
@@ -177,7 +183,7 @@ class Cart extends Component {
 
 		        	});
 
-		        }
+		    //    }
 		 });
 	 }
 	 if(this.state.isLoading){
@@ -207,7 +213,7 @@ class Cart extends Component {
 		 if(this.state.kolvotovar>0 && this.state.summtovar>0)
 		 {
 			 //Если товары и сумма есть то выводим корзину с цифрами
-		 	 SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox }>
+		 	 SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox } >
 
 							  		<Image source={{ uri: IMGPATH+'cartnew.png' }} style={ styles.personal } />
 
@@ -235,69 +241,80 @@ class Cart extends Component {
 
 	      var updateKolvo  =   this.updateKolvo;
 
+        if(this.state.cartall != null && this.state.cartall.length)
+        {
+          activIND = <View style={styles.container}>
+  		          {this.state.cartall.map((user) => (
+  			        <Swipeout
+  			        right={
+  				        [{
+  					      text: 'Удалить',
+  					      backgroundColor: 'red',
+  					      onPress: () => { this.delete_row(user[0].id) }
+  					   	}]
+  					 }
+  				     backgroundColor='transparent'
+  				     underlayColor='rgba(255, 0, 0, 1)'
+  				     key={user[0].id}
+  				     idrow={user[0].id}>
 
-	      activIND = <View style={styles.container}>
-		          {this.state.cartall.map((user) => (
-			        <Swipeout
-			        right={
-				        [{
-					      text: 'Удалить',
-					      backgroundColor: 'red',
-					      onPress: () => { this.delete_row(user[0].id) }
-					   	}]
-					 }
-				     backgroundColor='transparent'
-				     underlayColor='rgba(255, 0, 0, 1)'
-				     key={user[0].id}
-				     idrow={user[0].id}>
-
-			            <View style={styles.listItem}>
-
-
-
-			              <Image source={{ uri: IMGPATH+user[0].imgmini }} style={styles.imgmini} />
+  			            <View style={styles.listItem}>
 
 
 
-			             <View style={styles.textbox}>
-			             	<Text style={styles.title}>{user[0].name}</Text>
-
-			             </View>
-
-						<View style={styles.dropdownmenu}>
-
-						  	<DropdownMenu
-						  //  arrowImg={{ uri: IMGPATH+'nextnew.png' }}      //set the arrow icon, default is a triangle
-					      //  checkImage={{ uri: IMGPATH+'nextnew.png' }}    //set the icon of the selected item, default is a check mark
-					          bgColor={"rgba(0,0,0,0)"}                            //the background color of the head, default is grey
-					          tintColor={"#fff9ee"}                          //the text color of the head, default is white
-					      //  selectItemColor={"red"}                    //the text color of the selected item, default is red
-					          data={[[ [{id:user[0].id, kolvo:1, razdelname:"1шт."}], [{id:user[0].id, kolvo:2, razdelname:"2шт."}], [{id:user[0].id, kolvo:3, razdelname:"3шт."}], [{id:user[0].id, kolvo:4, razdelname:"4шт."}], [{id:user[0].id, kolvo:5, razdelname:"5шт."}] , [{id:user[0].id, kolvo:6, razdelname:"6шт."}] , [{id:user[0].id, kolvo:7, razdelname:"7шт."}] , [{id:user[0].id, kolvo:8, razdelname:"8шт."}] , [{id:user[0].id, kolvo:9, razdelname:"9шт."}] , [{id:user[0].id, kolvo:10, razdelname:"10шт."}] ]]}
+  			              <Image source={{ uri: IMGPATH+user[0].imgmini }} style={styles.imgmini} />
 
 
-					          maxHeight={130}                              // the max height of the menu
-					          fontSizep={17}
-					          selectIndexNum={user[0].kolvo-1}
-					          handler={(selection, row) => alert(data[selection][row])}
-					          updateKolvo={updateKolvo.bind(this)}>
 
-					         </DropdownMenu>
+  			             <View style={styles.textbox}>
+  			             	<Text style={styles.title}>{user[0].name}</Text>
 
-						</View>
+  			             </View>
+
+  						<View style={styles.dropdownmenu}>
+
+  						  	<DropdownMenu
+  						  //  arrowImg={{ uri: IMGPATH+'nextnew.png' }}      //set the arrow icon, default is a triangle
+  					      //  checkImage={{ uri: IMGPATH+'nextnew.png' }}    //set the icon of the selected item, default is a check mark
+  					          bgColor={"rgba(0,0,0,0)"}                            //the background color of the head, default is grey
+  					          tintColor={"#fff9ee"}                          //the text color of the head, default is white
+  					      //  selectItemColor={"red"}                    //the text color of the selected item, default is red
+  					          data={[[ [{id:user[0].id, kolvo:1, razdelname:"1шт."}], [{id:user[0].id, kolvo:2, razdelname:"2шт."}], [{id:user[0].id, kolvo:3, razdelname:"3шт."}], [{id:user[0].id, kolvo:4, razdelname:"4шт."}], [{id:user[0].id, kolvo:5, razdelname:"5шт."}] , [{id:user[0].id, kolvo:6, razdelname:"6шт."}] , [{id:user[0].id, kolvo:7, razdelname:"7шт."}] , [{id:user[0].id, kolvo:8, razdelname:"8шт."}] , [{id:user[0].id, kolvo:9, razdelname:"9шт."}] , [{id:user[0].id, kolvo:10, razdelname:"10шт."}] ]]}
 
 
-			             <View style={styles.pricebox}>
-				             <View style={styles.priceborder}>
-								<Text style={styles.price}>
-						          {user[0].price} ₽
-						        </Text>
-						    </View>
+  					          maxHeight={130}                              // the max height of the menu
+  					          fontSizep={17}
+  					          selectIndexNum={user[0].kolvo-1}
+  					          handler={(selection, row) => alert(data[selection][row])}
+  					          updateKolvo={updateKolvo.bind(this)}>
 
-						 </View>
-			            </View>
-		           	</Swipeout>
-		          ))}
-		        </View>;
+  					         </DropdownMenu>
+
+  						</View>
+
+
+  			             <View style={styles.pricebox}>
+  				             <View style={styles.priceborder}>
+  								<Text style={styles.price}>
+  						          {user[0].price} ₽
+  						        </Text>
+  						    </View>
+
+  						 </View>
+  			            </View>
+  		           	</Swipeout>
+  		          ))}
+  		        </View>;
+        }
+        else{
+          activIND = <View style={styles.viewZero}>
+                        <Text style={styles.titlezero}>В вашей корзине еще нет товаров.</Text>
+                        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Feed');}}>
+                          <Text style={styles.titlezerolink}>Перейти в меню</Text>
+                        </TouchableOpacity>
+                     </View>
+        }
+
       }
 
     return (
@@ -390,6 +407,21 @@ const styles = StyleSheet.create({
 	fontSize: 16,
 	color: '#fff9ee',
 	marginLeft: 5,
+  },
+  viewZero: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  titlezero:{
+    fontSize: 16,
+  	color: '#fff9ee',
+  },
+  titlezerolink:{
+    fontSize: 16,
+  	color: '#8d7952',
+    textDecorationLine: 'underline',
   },
   hrefarea:{
 	  marginBottom: 10,

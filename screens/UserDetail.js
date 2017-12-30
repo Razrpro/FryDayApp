@@ -20,10 +20,17 @@ class UserDetail extends Component {
 				    	temp_kolvo = temp_kolvo + value[0].kolvo;
 					});
 				}
+				else{
+            this.setState({
+  						kolvotovar: 0,
+  						summtovar: 0,
+  						isLoadingKorzina: false,
+            });
+        }
 
 
 
-				if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
+			//	if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
 						console.log('TEMP_KOLVO:'+temp_kolvo);
 
 					this.setState({
@@ -33,7 +40,7 @@ class UserDetail extends Component {
 
 		        	});
 
-		        }
+		    //    }
 		 });		}
 
 	constructor(props) {
@@ -105,7 +112,7 @@ class UserDetail extends Component {
 						  	    </TouchableOpacity>;
 		}
 		else{
-			SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox }>
+			SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox } onPress={() => {clearInterval(timer); this.props.navigation.navigate('Cart');}}>
 
 							  		<Image source={{ uri: IMGPATH+'cartnew.png' }} style={ styles.personal } />
 

@@ -67,8 +67,15 @@ class Contacts extends Component {
 				    	temp_kolvo = temp_kolvo + value[0].kolvo;
 					});
 				}
+				else{
+            this.setState({
+  						kolvotovar: 0,
+  						summtovar: 0,
+  						isLoadingKorzina: false,
+            });
+        }
 
-				if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
+				//if(this.state.kolvotovar != temp_kolvo || this.state.summtovar != temp_summ){
 						console.log('TEMP_KOLVO:'+temp_kolvo);
 
 					this.setState({
@@ -78,7 +85,7 @@ class Contacts extends Component {
 
 		        	});
 
-		        }
+		     //   }
 		 });
 
   	}
@@ -103,7 +110,7 @@ class Contacts extends Component {
 						  	    </TouchableOpacity>;
 		}
 		else{
-			SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox }>
+			SHOPING_CART_TOP = <TouchableOpacity style={ styles.personalbox } onPress={() => { this.props.navigation.navigate('Cart');}}>
 
 							  		<Image source={{ uri: IMGPATH+'cartnew.png' }} style={ styles.personal } />
 
@@ -180,8 +187,8 @@ const styles = StyleSheet.create({
        justifyContent: 'space-between',
 	},
 	logo: {
-		height: 60,
-		width: 130,
+		height: 50,
+		width: 120,
 		margin: 10
 	},
 	menu: {
