@@ -628,7 +628,7 @@ class Loyality extends Component {
 	  }
 
 	 if(this.state.isLoadingKorzina){
-		 SHOPING_CART_TOP = <ActivityIndicator />
+		 SHOPING_CART_TOP = <ActivityIndicator  style={ styles.personalbox }/>
 
 	 }
 	 else{

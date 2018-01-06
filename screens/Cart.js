@@ -205,7 +205,7 @@ class Cart extends Component {
 
 			 //--------корзина в топе ----------------
 	 if(this.state.isLoadingKorzina){
-		 SHOPING_CART_TOP = <ActivityIndicator />
+		 SHOPING_CART_TOP = <ActivityIndicator  style={ styles.personalbox }/>
 
 	 }
 	 else{
@@ -390,8 +390,8 @@ const styles = StyleSheet.create({
 
 	},
 	personalbox: {
-		height:55,
-		width: 65,
+		minHeight:55,
+		minWidth: 65,
 	},
 
   container: {

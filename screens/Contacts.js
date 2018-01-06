@@ -93,7 +93,7 @@ class Contacts extends Component {
   render() {
 
 	  if(this.state.isLoadingKorzina){
-		 SHOPING_CART_TOP = <ActivityIndicator />
+		 SHOPING_CART_TOP = <ActivityIndicator  style={ styles.personalbox }/>
 
 	 }
 	 else{
@@ -269,6 +269,10 @@ const styles = StyleSheet.create({
 	},
 	cartkolvotext: {
 			color: '#ffffff',
+	},
+	pricetop: {
+		color: '#fff9ee',
+		fontSize: 14,
 	},
 });
 
