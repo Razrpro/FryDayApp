@@ -44,9 +44,11 @@ class Loyality extends Component {
 
 
    componentDidMount() {
-
-		const { status } =  Permissions.askAsync(Permissions.CAMERA);
-		this.setState({ hasCameraPermission: status === 'granted' });
+     
+     if(this.state.qrCodeCamera){
+		     const { status } =  Permissions.askAsync(Permissions.CAMERA);
+		       this.setState({ hasCameraPermission: status === 'granted' });
+     }
 
 	  	AsyncStorage.getItem("UPHONE").then((value_phone) => {
 	  		if(value_phone!=null){
@@ -660,12 +662,29 @@ class Loyality extends Component {
 	  <View style={styles.black}>
 	  <StatusBar barStyle="light-content"/>
 		  <View style={styles.header}>
-		    <TouchableOpacity
-	          onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
-	          style={styles.button}
-	        >
-	        <Image source={{ uri: IMGPATH+'menuicon.png' }} style={ styles.menu } />
-	        </TouchableOpacity>
+
+        {
+          (this.state.codeReg)?
+            <TouchableOpacity
+                onPress={() => {
+                  this.setState({
+                     codeReg:false,
+                  });
+      	      }}
+                style={styles.button}
+              >
+              <Image source={{ uri: IMGPATH+'backiconew.png' }} style={ styles.menu } />
+            </TouchableOpacity>
+          :
+            <TouchableOpacity
+               onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+               style={styles.button}
+             >
+             <Image source={{ uri: IMGPATH+'menuicon.png' }} style={ styles.menu } />
+           </TouchableOpacity>
+        }
+
+
 
 		  	<Image source={{ uri: IMGPATH+USERID+'/logonew.png' }} style={ styles.logo } />
 
