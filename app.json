@@ -17,6 +17,9 @@
     },
     "ios": {
       "bundleIdentifier": "ru.Blackstudio.frydaycafe"
-    }
+    },
+    "android": {
+    "package": "ru.Blackstudio.frydaycafe"
+  }
   }
 }
