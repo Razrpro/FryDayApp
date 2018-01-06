@@ -422,11 +422,11 @@ const styles = StyleSheet.create({
   black: {
 	  backgroundColor: '#000',
 	  flex: 1,
+    zIndex: 1,
   },
   dropdownmenu: {
-	  height: 50,
+	  minHeight: 50,
 	  zIndex: 999,
-
   },
   dropmenu: {
 	  fontSize: 20,

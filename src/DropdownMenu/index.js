@@ -21,14 +21,14 @@ export default class DropdownMenu extends Component {
     for (var i = 0; i < selectIndex.length; i++) {
       selectIndex[i] = 0;
     }
-    
- 
+
+
 	     this.state = {
 		      activityIndex: -1,
 		      selectIndex: selectIndex,
 		      rotationAnims: props.data.map(() => new Animated.Value(0))
-	    }; 
-    
+	    };
+
     this.defaultConfig = {
       bgColor: 'grey',
       tintColor: 'white',
@@ -36,10 +36,10 @@ export default class DropdownMenu extends Component {
       arrowImg: './img/dropdown_arrow.png',
       checkImage: './img/menu_check.png',
       fontSizep: 20,
-      
+
     };
 
-		
+
 
   }
 
@@ -70,10 +70,10 @@ export default class DropdownMenu extends Component {
       var heightStyle = {};
       if (this.props.maxHeight && this.props.maxHeight < currentTitles.length * 44) {
         heightStyle.height = this.props.maxHeight;
-      } 
+      }
 
       return (
-        <View style={{height: this.props.maxHeight, opacity: 0.9, left: 0, right: 0, top: 0, bottom: 0}}>
+        <View style={{height: this.props.maxHeight, opacity: 0.9, left: 0, right: 0, zIndex:1000, top: 0, bottom: 0}}>
           <TouchableOpacity onPress={() => this.openOrClosePanel(this.state.activityIndex)} activeOpacity={1} style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0}}>
             <View style={{opacity: 0.4, backgroundColor: 'black', flex: 1 }} />
           </TouchableOpacity>
@@ -94,8 +94,8 @@ export default class DropdownMenu extends Component {
       return (null);
     }
   }
-  
-  
+
+
   openOrClosePanel(index) {
 
     this.props.bannerAction ? this.props.bannerAction() : null;
@@ -128,7 +128,7 @@ export default class DropdownMenu extends Component {
   }
 
   openPanel(index) {
-	  
+
 
     Animated.timing(
       this.state.rotationAnims[index],
@@ -152,7 +152,7 @@ export default class DropdownMenu extends Component {
   }
 
   itemOnPress(index) {
-	
+
 
     if (this.state.activityIndex > -1) {
       var selectIndex = this.state.selectIndex;
@@ -162,15 +162,15 @@ export default class DropdownMenu extends Component {
       });
       if (this.props.handler) {
         //this.props.handler(this.state.activityIndex, index);
-        
+
         let razdel_id = this.props.data[this.state.activityIndex][index][0].sort;
         let kolvo_id = this.props.data[this.state.activityIndex][index][0].id;
         let kolvo_kolvo = this.props.data[this.state.activityIndex][index][0].kolvo;
         console.log(razdel_id);
-     
+
 		var updateRazdel  =   this.props.updateRazdel;
 		var updateKolvo  =   this.props.updateKolvo;
-		
+
 		if(updateRazdel)updateRazdel(razdel_id);
 		if(updateKolvo)updateKolvo(kolvo_id, kolvo_kolvo);
       }
@@ -194,9 +194,7 @@ export default class DropdownMenu extends Component {
   }
 
   render() {
-  	
-    
-    
+
     return (
       <View style={{flexDirection: 'column', flex: 1}} >
         <View style={{flexDirection: 'row', backgroundColor: this.props.bgColor ? this.props.bgColor : this.defaultConfig.bgColor,borderBottomColor:this.props.bgColor,borderBottomWidth:0.5}} >
@@ -215,7 +213,7 @@ export default class DropdownMenu extends Component {
                   <View style={{flexGrow:1,height:13}}></View>
                 </View>
               </TouchableOpacity>
-             
+
             )
           }
         </View>
@@ -236,4 +234,3 @@ export default class DropdownMenu extends Component {
 //       arrowImg: './img/dropdown_arrow.png',
 //       checkImage: './img/menu_check.png'
 //     };
-

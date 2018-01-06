@@ -140,16 +140,14 @@ export const Root = DrawerNavigator({
   mode: 'modal',
   headerMode: 'screen',
   contentOptions: {
-       style: {
-	    marginTop:0,
-	    paddingTop:50,
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        flex: 1,
-       },
+
 	   inactiveTintColor: '#ffffff',
 	   activeBackgroundColor: 'rgba(100,100,100,1)',
 	   activeTintColor: '#ffffff',
-
+		 itemsContainerStyle: {
+		 	paddingTop: 30,
+		 },
   },
-  drawerBackgroundColor: 'transparent',
+
+  drawerBackgroundColor: 'rgba(0,0,0,0.7)',
 });
