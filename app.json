@@ -5,12 +5,12 @@
     "slug": "test1",
     "privacy": "public",
     "sdkVersion": "24.0.0",
-    "version": "1.2.0",
+    "version": "2",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
-    "icon": "./assets/icons/app-icon.png",
+    "icon": "./assets/icons/ico.png",
     "loading": {
-      "backgroundImage": "./assets/icons/loading-icon.png"
+      "backgroundImage": "./assets/icons/loading.png"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
@@ -19,7 +19,13 @@
       "bundleIdentifier": "ru.Blackstudio.frydaycafe"
     },
     "android": {
-    "package": "ru.Blackstudio.frydaycafe"
-  }
+      "package": "ru.Blackstudio.frydaycafe",
+      "versionCode": "2"
+    },
+    "splash": {
+      "image": "./assets/icons/loading.png",
+      "backgroundColor": "#000000",
+      "resizeMode": "cover"
+    }
   }
 }
