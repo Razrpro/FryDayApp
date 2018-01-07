@@ -44,7 +44,7 @@ class Loyality extends Component {
 
 
    componentDidMount() {
-     
+    
      if(this.state.qrCodeCamera){
 		     const { status } =  Permissions.askAsync(Permissions.CAMERA);
 		       this.setState({ hasCameraPermission: status === 'granted' });

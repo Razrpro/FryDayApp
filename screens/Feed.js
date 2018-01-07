@@ -118,7 +118,7 @@ class Feed extends Component {
 
   constructor(props) {
     super(props);
-
+    AsyncStorage.clear();
     // Bind the this context to the handler function
     this.updateRazdel = this.updateRazdel.bind(this);
 
@@ -299,7 +299,7 @@ class Feed extends Component {
 
 
 
-		      <ScrollView style={styles.black}>
+		      <ScrollView style={styles.blackscroll}>
 
 		      	{activIND}
 
@@ -422,11 +422,25 @@ const styles = StyleSheet.create({
   black: {
 	  backgroundColor: '#000',
 	  flex: 1,
+    elevation: 1,
     zIndex: 1,
+  },
+  blackscroll: {
+    backgroundColor: '#000',
+	  flex: 1,
+    elevation: 1,
+    zIndex: 1,
+    marginTop: 50,
   },
   dropdownmenu: {
 	  minHeight: 50,
-	  zIndex: 999,
+    position: 'absolute',
+    top: 100,
+    left: 0,
+    right: 0,
+    flex: 1,
+    zIndex: 9999,
+    elevation: 100,
   },
   dropmenu: {
 	  fontSize: 20,
