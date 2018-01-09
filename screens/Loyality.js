@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, View, Image, ImageBackground, Text, TouchableOpacity, TextInput, Button, Keyboard, TouchableWithoutFeedback, ActivityIndicator, AsyncStorage, NavigatorIOS, Linking, StatusBar, List, ListItem } from 'react-native';
 import QRCode from 'react-native-qrcode';
 
-import { USERID, IMGPATH } from '../config/config'
+import { USERID, IMGPATH, LICENSE_PATH } from '../config/config'
 
 class Loyality extends Component {
   constructor(props) {
@@ -628,7 +628,7 @@ class Loyality extends Component {
 				       </View>
 			       </TouchableOpacity>
 			       <View style={styles.textsoglasheniebox}>
-			       		<Text style={ styles.textsoglashenie }>Я принимаю условия </Text><TouchableOpacity><Text style={ styles.hreflink }>Пользовательского соглашения</Text></TouchableOpacity>
+			       		<Text style={ styles.textsoglashenie }>Я принимаю условия </Text><TouchableOpacity  onPress={() => Linking.openURL(LICENSE_PATH)}><Text style={ styles.hreflink }>Пользовательского соглашения</Text></TouchableOpacity>
 			       </View>
 			   </ImageBackground>;
 
