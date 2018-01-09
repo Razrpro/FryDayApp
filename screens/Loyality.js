@@ -346,18 +346,6 @@ class Loyality extends Component {
 							<Image source={{ uri: IMGPATH+'lichniy_cabinet.png' }} style={ styles.lichniycabinetimg } />
 						  	<Text style={ styles.ballslctext }>Заполнить личные данные</Text>
 						</View>
-
-						   <TouchableOpacity
-					          onPress={() => {
-
-
-						        			AsyncStorage.setItem('UPHONE','');
-							  				AsyncStorage.setItem('UCODE','');
-
-					          } }
-					        >
-					        	<Text color="red">Выйти из системы</Text>
-					        </TouchableOpacity>
 					</ImageBackground>
 ;
 
