@@ -46,11 +46,13 @@ class Loyality extends Component {
 
    componentDidMount() {
     
-     	AsyncStorage.getItem("UPHONE").then((value_phone) => {
-	  		if(value_phone!=null){
-				AsyncStorage.getItem("UCODE").then((value_code) => {
+     	AsyncStorage.getItem('UPHONE',(err, value_phone) => {
+			console.log('CACHEphone:'+value_phone);
+
+			if(value_phone!=null){
+				AsyncStorage.getItem('UCODE',(err, value_code) => {	
 					if(value_code!=null){
-						console.log('CACHEphone:'+value_phone+' CACHEcode:'+value_code);
+						console.log('CACHEcode:'+value_code);
 
 						 this.setState({
 							 	   code1: value_code,
@@ -115,32 +117,33 @@ class Loyality extends Component {
 
 	 if(this.state.startReg){
 		   console.log('Zapros api startReg');
-
-		     fetch('https://appcafe.ru/api2.php?do=regNewUser&userid='+USERID+'&newUserPhone='+this.state.phone)
-		      .then((response) => response.json())
-		      .then((responseJson) => {
-
-		          console.log("Registering NEW user!");
-
-		          if(responseJson[0]=="error")
-		          {
-			      		alert('Не верный формат телефона');
-			      		this.setState({startReg:false});
-		          }
-		          else{
-
-							   this.setState({
-								   codeReg:true,
-								   startReg:false,
-								   });
-		          }
-
-		      })
-		      .catch((error) => {
-		        console.error(error);
-		 });
-
-	      screen = <ActivityIndicator />;
+		
+				fetch('https://appcafe.ru/api2.php?do=regNewUser&userid='+USERID+'&newUserPhone='+this.state.phone)
+				.then((response) => response.json())
+				.then((responseJson) => {
+  
+							console.log("Registering NEW user!");
+		
+							if(responseJson[0]=="error")
+							{
+									alert('Не верный формат телефона');
+									this.setState({startReg:false});
+							}
+							else{
+		
+										this.setState({
+											codeReg:true,
+											startReg:false,
+											});
+							}
+		
+						})
+						.catch((error) => {
+						console.error(error);
+				});
+		
+				screen = <ActivityIndicator />;
+		   
 	  }
 	  else if(this.state.codeReg){
 
@@ -214,7 +217,6 @@ class Loyality extends Component {
 	  }
 	  else if(this.state.codeConfirm){
 
-
 		   console.log('Try confirm code'+'https://appcafe.ru/api2.php?do=tryConfirmAcc&userid='+USERID+'&userPhone='+this.state.phone+'&pass='+this.state.code1+this.state.code2+this.state.code3+this.state.code4);
 
 		     fetch('https://appcafe.ru/api2.php?do=tryConfirmAcc&userid='+USERID+'&userPhone='+this.state.phone+'&pass='+this.state.code1+this.state.code2+this.state.code3+this.state.code4)
@@ -243,6 +245,8 @@ class Loyality extends Component {
 				  				AsyncStorage.setItem('UPHONE',this.state.phone);
 				  				AsyncStorage.setItem('UCODE',this.state.code1+this.state.code2+this.state.code3+this.state.code4);
 
+								  console.log('AsyncStorage.setItem UPHONE:',this.state.phone);
+								  console.log('AsyncStorage.setItem UCODE:',this.state.code1+this.state.code2+this.state.code3+this.state.code4);
 
 				  			if(responseJson[0].group){
 								this.getPremissionAsync(); //Требуем рарешение на камеру и если уалось переводим в админ-режим
@@ -610,7 +614,14 @@ class Loyality extends Component {
 					        />
 			       		</View>
 			       </View>
-			       <TouchableOpacity onPress={() => this.setState({startReg: true})}>
+				   <TouchableOpacity onPress={() => {
+						if(!this.state.phone){
+							alert('Вы не ввели номер телефона');
+						}
+						else{
+							this.setState({startReg: true});
+						}
+				   }}>
 				       <View style={styles.buttonregbox}>
 								<Text style={ styles.buttonreg }>ЗАРЕГИСТРИРОВАТЬСЯ</Text>
 				       </View>

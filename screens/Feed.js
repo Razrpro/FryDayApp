@@ -118,7 +118,7 @@ class Feed extends Component {
 
   constructor(props) {
     super(props);
-    AsyncStorage.clear();
+
     // Bind the this context to the handler function
     this.updateRazdel = this.updateRazdel.bind(this);
 
