@@ -39,18 +39,14 @@ class Loyality extends Component {
 	    kolvotovar: 0,
 	    summtovar: 0,
     };
+	this.getPremissionAsync = this.getPremissionAsync.bind(this);
 
   }
 
 
    componentDidMount() {
     
-     if(this.state.qrCodeCamera){
-		     const { status } =  Permissions.askAsync(Permissions.CAMERA);
-		       this.setState({ hasCameraPermission: status === 'granted' });
-     }
-
-	  	AsyncStorage.getItem("UPHONE").then((value_phone) => {
+     	AsyncStorage.getItem("UPHONE").then((value_phone) => {
 	  		if(value_phone!=null){
 				AsyncStorage.getItem("UCODE").then((value_code) => {
 					if(value_code!=null){
@@ -103,6 +99,18 @@ class Loyality extends Component {
 		      //  }
 		 });		}
 
+  async getPremissionAsync() {
+	const { status } = await Permissions.askAsync(Permissions.CAMERA);
+	if(status === 'granted')
+	{
+		this.setState({ 
+			hasCameraPermission: true, 
+			codeConfirm:false,
+			qrCodeCamera:true
+		});
+	}
+  }
+	
   render() {
 
 	 if(this.state.startReg){
@@ -237,11 +245,8 @@ class Loyality extends Component {
 
 
 				  			if(responseJson[0].group){
-				  				this.setState({
-					  				codeConfirm:false,
-				  					qrCodeCamera:true,
-				  				});
-				  			}
+								this.getPremissionAsync(); //Требуем рарешение на камеру и если уалось переводим в админ-режим
+ 				  			}
 				  			else{
 							   this.setState({
 								   codeConfirm:false,
