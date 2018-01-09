@@ -841,6 +841,9 @@ const styles = StyleSheet.create({
 	},
 	righttextphone: {
 		color: '#fcf5e9',
+		backgroundColor: 'rgba(0,0,0,0)',
+		flex: 1,
+		width: '100%',
 		fontSize: 20,
 		paddingLeft:10,
 		height:40,
