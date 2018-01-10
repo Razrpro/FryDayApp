@@ -5,7 +5,7 @@
     "slug": "test1",
     "privacy": "public",
     "sdkVersion": "24.0.0",
-    "version": "2",
+    "version": "3",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/ico.png",
@@ -20,7 +20,7 @@
     },
     "android": {
       "package": "ru.Blackstudio.frydaycafe",
-      "versionCode": "2"
+      "versionCode": "3"
     },
     "splash": {
       "image": "./assets/icons/loading.png",

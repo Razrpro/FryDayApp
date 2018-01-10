@@ -347,9 +347,17 @@ class Cart extends Component {
 		      			<Text style={styles.price}>{this.state.summtovar} ₽</Text>
 		      		</TouchableOpacity>
 			</View>
-			<TouchableOpacity style={styles.buttbackbox} onPress={() => this.onLearnMore()}>
-					     <Text style={ styles.buttbacktext }>ОФОРМИТЬ ЗАКАЗ</Text>
-			</TouchableOpacity>
+      {
+        (this.state.summtovar==0)?
+        <View style={styles.buttbackboxDisabled}>
+  					     <Text style={ styles.buttbacktext }>ОФОРМИТЬ ЗАКАЗ</Text>
+  			</View>
+        :
+        <TouchableOpacity style={styles.buttbackbox} onPress={() => (this.state.cartall)?this.onLearnMore():null}>
+  					     <Text style={ styles.buttbacktext }>ОФОРМИТЬ ЗАКАЗ</Text>
+  			</TouchableOpacity>
+      }
+
       </View>
 
      </View>
@@ -537,6 +545,18 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent:'center',
 	},
+  buttbackboxDisabled: {
+    width:250,
+    height:50,
+    borderRadius: 5,
+    borderWidth: 1,
+    marginTop: 30,
+    opacity: 0.3,
+    borderColor: '#fcf5e9',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    alignItems: 'center',
+    justifyContent:'center',
+  },
 	buttbacktext: {
 		fontSize:20,
 		color: '#fcf5e9',
