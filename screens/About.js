@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View, Image, TouchableOpacity, StatusBar, Text,
 
 import ImageSlider from 'react-native-image-slider';
 
-import { USERID, IMGPATH } from '../config/config'
+import { USERID, IMGPATH, IMGBIGMASS, ABOUTTEXT } from '../config/config'
 
 
 
@@ -110,21 +110,14 @@ class About extends Component {
 		  		<Text style={styles.titletext}>О ресторане</Text>
 		  		<View style={styles.textmainboxleftalign}>
 		  		<Text style={styles.textmain}>
-		  			Ресторан Fry Day появился как воплощение идеи о месте, где можно отдохнуть всем - и детям, и взрослым, и их родителям.
-		  			Fry Day - это не только уютное место и достойная кухня, это труд многих людей, которые придумывают, устраивают и проводят интересные мероприятия, захватывающие шоу и незабываемые 						банкеты. Любые встречи - семейные, рабочие, детские или дружески - пройдут в светлой, гостеприимной и теплой атмосфере.
+		  			{ABOUTTEXT}
 				</Text>
 			  	</View>
 		  </View>
 
 
 
-				<ImageSlider height={300} style={styles.imagebig} images={[
-		        IMGPATH+'fryday1.jpg',
-		        IMGPATH+'fryday2.jpg',
-		        IMGPATH+'fryday3.jpg',
-		        IMGPATH+'fryday4.jpg',
-		        IMGPATH+'fryday5.jpg',
-				]} />
+				<ImageSlider height={300} style={styles.imagebig} images={IMGBIGMASS} />
 
    		</ScrollView>
 
